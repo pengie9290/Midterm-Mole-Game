@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\DirtControl.cs" />
+    <Compile Include="Assets\Scripts\DirtManager.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/jeremyhuml/Documents/GitHub/Midterm-Mole-Game/Midterm Mole Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
