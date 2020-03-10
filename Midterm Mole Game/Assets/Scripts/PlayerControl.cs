@@ -33,9 +33,6 @@ public class PlayerControl : MonoBehaviour
     //Keeps track of life count
     public int Lives = 3;
 
-    //Keeps track of amount of food
-    public int FoodCount = 4;
-
     //Stores Life Count Message
     public Text LifeCountMessage;
 
@@ -111,7 +108,7 @@ public class PlayerControl : MonoBehaviour
     void LoadVictory()
     {
         VictoryMessage.gameObject.SetActive(true);
-        PressSpaceMessage.gameObject.SetActive(true);
+        //PressSpaceMessage.gameObject.SetActive(true);
     }
 
     //Loads Game Over
@@ -220,13 +217,6 @@ public class PlayerControl : MonoBehaviour
         LiveMole.enabled = true;
         DeadMole.SetActive(false);
         transform.position = new Vector3(0, 0, 0);
-    }
-
-    //Tells player object that they caught food
-    public void FoodCaught()
-    {
-        FoodCount--;
-        if (FoodCount < 1) GameState = GameStates.Victory;
     }
 
     //Tells the game when to restart the scene

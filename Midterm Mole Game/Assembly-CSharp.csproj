@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\DirtManager.cs" />
     <Compile Include="Assets\Scripts\FoodControl.cs" />
     <Compile Include="Assets\Scripts\NPCDigger.cs" />
+    <Compile Include="Assets\Scripts\NPCManager.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\ScoreController.cs" />
     <Reference Include="Unity.Timeline.Editor">

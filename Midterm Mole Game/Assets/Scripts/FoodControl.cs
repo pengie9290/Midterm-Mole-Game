@@ -18,6 +18,8 @@ public class FoodControl : MonoBehaviour
     public Vector3 Direction = Vector3.zero;
     Rigidbody2D rb;
 
+    public float PointValue = 5;
+
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class FoodControl : MonoBehaviour
         DigTimer = DigDelayTime;
         ChooseDirection();
         SetMoveTimer();
+        NPCManager.Instance.RegisterFood(gameObject);
     }
 
     void SetMoveTimer()
@@ -66,5 +69,17 @@ public class FoodControl : MonoBehaviour
     void MoveInDirection()
     {
         rb.AddForce(Direction * MovementSpeed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) Killed();
+    }
+
+    void Killed()
+    {
+        NPCManager.Instance.KillFood(gameObject);
+        ScoreController.Instance.AddPoints(PointValue);
+        Destroy(gameObject);
     }
 }
