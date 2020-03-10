@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\FoodControl.cs" />
     <Compile Include="Assets\Scripts\NPCDigger.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\ScoreController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/jeremyhuml/Documents/GitHub/Midterm-Mole-Game/Midterm Mole Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
