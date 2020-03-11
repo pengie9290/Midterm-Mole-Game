@@ -85,6 +85,7 @@ public class ScoreController : MonoBehaviour
     {
         Points += points;
         PointsDisplay.text = "Points\n" + Points;
+        if (!GameInProgress) FinalScoreDisplay.text = "Final Score\n" + TotalScore;
     }
 
     void Countdown()

@@ -78,8 +78,8 @@ public class FoodControl : MonoBehaviour
 
     void Killed()
     {
-        NPCManager.Instance.KillFood(gameObject);
         ScoreController.Instance.AddPoints(PointValue);
+        NPCManager.Instance.KillFood(gameObject);
         Destroy(gameObject);
     }
 }

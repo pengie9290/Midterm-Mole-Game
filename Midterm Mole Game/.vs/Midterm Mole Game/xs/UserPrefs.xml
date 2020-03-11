@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{D490E3E6-CAC6-2C2E-1E6C-43649000950A}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NPCManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerControl.cs" Line="259" Column="6" />
+      <File FileName="Assets/Scripts/PlayerControl.cs" Line="111" Column="11" />
       <File FileName="Assets/Scripts/DirtControl.cs" />
       <File FileName="Assets/Scripts/DirtManager.cs" />
       <File FileName="Assets/Scripts/NPCDigger.cs" />
-      <File FileName="Assets/Scripts/FoodControl.cs" Line="17" Column="37" />
-      <File FileName="Assets/Scripts/ScoreController.cs" Line="23" Column="30" />
-      <File FileName="Assets/Scripts/NPCManager.cs" Line="12" Column="28" />
+      <File FileName="Assets/Scripts/FoodControl.cs" />
+      <File FileName="Assets/Scripts/ScoreController.cs" />
+      <File FileName="Assets/Scripts/NPCManager.cs" Line="50" Column="57" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="09f34a39-8c9c-477e-b74a-f57c905e2e3f" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="365934a5-e1f4-420a-a6f9-3be5829db164" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
