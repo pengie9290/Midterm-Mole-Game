@@ -65,7 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DirtControl.cs" />
     <Compile Include="Assets\Scripts\DirtManager.cs" />
-    <Compile Include="Assets\Scripts\FoodControl.cs" />
+    <Compile Include="Assets\Scripts\NPCControl.cs" />
     <Compile Include="Assets\Scripts\NPCDigger.cs" />
     <Compile Include="Assets\Scripts\NPCManager.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
