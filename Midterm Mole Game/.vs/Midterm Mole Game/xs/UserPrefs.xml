@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{D490E3E6-CAC6-2C2E-1E6C-43649000950A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NPCControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttackZoneControl.cs">
     <Files>
       <File FileName="Assets/Scripts/PlayerControl.cs" Line="111" Column="11" />
       <File FileName="Assets/Scripts/DirtControl.cs" />
       <File FileName="Assets/Scripts/DirtManager.cs" />
       <File FileName="Assets/Scripts/NPCDigger.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FoodControl.cs" Line="84" Column="6" />
       <File FileName="Assets/Scripts/ScoreController.cs" Line="88" Column="84" />
       <File FileName="Assets/Scripts/NPCManager.cs" Line="37" Column="6" />
-      <File FileName="Assets/Scripts/NPCControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/NPCControl.cs" Line="80" Column="82" />
+      <File FileName="Assets/Scripts/AttackZoneControl.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +16,7 @@
           <Node name="Midterm Mole Game" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="NPCControl.cs" selected="True" />
+                <Node name="AttackZoneControl.cs" selected="True" />
               </Node>
             </Node>
           </Node>

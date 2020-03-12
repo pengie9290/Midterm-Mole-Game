@@ -117,7 +117,7 @@ public class PlayerControl : MonoBehaviour
         GameOverMessage.gameObject.SetActive(true);
     }
 
-    void Start()
+    void Awake()
     {
         //Sets the player as a Singleton
         if (Instance == null) Instance = this;
@@ -199,12 +199,12 @@ public class PlayerControl : MonoBehaviour
     {
         if (Alive)
         {
-            PressSpaceMessage.gameObject.SetActive(true);
+            if (PressSpaceMessage != null) PressSpaceMessage.gameObject.SetActive(true);
             Lives--;
             UpdateLifeCounter();
             Alive = false;
-            LiveMole.enabled = false;
-            DeadMole.SetActive(true);
+            if (LiveMole != null) LiveMole.enabled = false;
+            if (DeadMole != null) DeadMole.SetActive(true);
             if (Lives < 1) GameState = GameStates.YouLose;
         }
     }
@@ -212,10 +212,10 @@ public class PlayerControl : MonoBehaviour
     //Revives player at the cost of a life
     void RevivePlayer()
     {
-        PressSpaceMessage.gameObject.SetActive(false);
+        if (PressSpaceMessage != null) PressSpaceMessage.gameObject.SetActive(false);
         Alive = true;
-        LiveMole.enabled = true;
-        DeadMole.SetActive(false);
+        if (LiveMole != null) LiveMole.enabled = true;
+        if (DeadMole != null) DeadMole.SetActive(false);
         transform.position = new Vector3(0, 0, 0);
     }
 
@@ -235,7 +235,7 @@ public class PlayerControl : MonoBehaviour
     //Updates the life counter
     void UpdateLifeCounter()
     {
-        LifeCountMessage.text = "Lives: " + Lives;
+        if (LifeCountMessage != null) LifeCountMessage.text = "Lives: " + Lives;
     }
 
     //Restarts the scene

@@ -22,7 +22,6 @@ public class NPCControl : MonoBehaviour
 
     public float PointValue = 5;
 
-
     void Start()
     {
         if (rb == null) rb = GetComponent<Rigidbody2D>();
@@ -49,6 +48,7 @@ public class NPCControl : MonoBehaviour
         if (MoveTimer > 0)
         {
             MoveInDirection();
+            FaceInDirection();
             MoveTimer -= Time.deltaTime;
             if (MoveTimer <= 0)
             {
@@ -65,18 +65,48 @@ public class NPCControl : MonoBehaviour
 
     void ChooseDirection()
     {
-        Direction = Random.onUnitSphere;
-        Direction = new Vector3(Direction.x, Direction.y, 0);
+        if (!CanSeePlayer)
+        {
+            Direction = Random.onUnitSphere;
+            Direction = new Vector3(Direction.x, Direction.y, 0);
+        }
+    }
+
+    bool CanSeePlayer
+    {
+        get
+        {
+            Vector3 PlayerDirection = (PlayerControl.Instance.gameObject.transform.position - transform.position);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, PlayerDirection);
+            if (hit)
+            {
+                GameObject found = hit.transform.gameObject;
+                print(found.name);
+                if (found.CompareTag("Player")) return true;
+            }
+            return false;
+        }
     }
 
     void MoveInDirection()
     {
+        if (CanSeePlayer)
+        {
+            Vector3 PerfectDirection = PlayerControl.Instance.transform.position - transform.position;
+            PerfectDirection.Normalize();
+            Direction = Vector3.Lerp(Direction, PerfectDirection, 0.1f);
+        }
         rb.AddForce(Direction * MovementSpeed * Time.deltaTime);
+    }
+
+    void FaceInDirection()
+    {
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, Direction);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) Killed();
+        if (PlayerControl.Instance.GameState == PlayerControl.GameStates.Playing && collision.gameObject.CompareTag("Player")) Killed();
     }
 
     void Killed()
