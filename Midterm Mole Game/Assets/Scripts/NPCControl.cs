@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCControl : MonoBehaviour
 {
     public bool isFood = true;
+    public bool isBoss = false;
 
     public bool CanDig = true;
     public NPCDigger digger;
@@ -19,6 +20,12 @@ public class NPCControl : MonoBehaviour
     public float MovementSpeed = 1f;
     public Vector3 Direction = Vector3.zero;
     Rigidbody2D rb;
+
+    public float MaxBossHealth = 5;
+    public float CurrentBossHealth = 5;
+    public float BossIFramesTimer = 0;
+    public float MaxBossIFramesTime = 3;
+    public List<GameObject> BossTailSegments = new List<GameObject>();
 
     public float PointValue = 5;
 
@@ -61,11 +68,17 @@ public class NPCControl : MonoBehaviour
             ChooseDirection();
             SetMoveTimer();
         }
+
+        if (isBoss && BossIFramesTimer > 0)
+        {
+            BossIFramesTimer -= Time.deltaTime;
+            if (BossIFramesTimer < 0) BossIFramesTimer = 0;
+        }
     }
 
     void ChooseDirection()
     {
-        if (!CanSeePlayer)
+        if (!CanSeePlayer && !isBoss)
         {
             Direction = Random.onUnitSphere;
             Direction = new Vector3(Direction.x, Direction.y, 0);
@@ -81,7 +94,6 @@ public class NPCControl : MonoBehaviour
             if (hit)
             {
                 GameObject found = hit.transform.gameObject;
-                print(found.name);
                 if (found.CompareTag("Player")) return true;
             }
             return false;
@@ -90,7 +102,13 @@ public class NPCControl : MonoBehaviour
 
     void MoveInDirection()
     {
-        if (CanSeePlayer)
+        if (isBoss && CurrentBossHealth < MaxBossHealth)
+        {
+            Vector3 PerfectDirection = PlayerControl.Instance.transform.position - transform.position;
+            PerfectDirection.Normalize();
+            Direction = Vector3.Lerp(Direction, PerfectDirection, 0.1f);
+        }
+        else if (CanSeePlayer)
         {
             Vector3 PerfectDirection = PlayerControl.Instance.transform.position - transform.position;
             PerfectDirection.Normalize();
@@ -106,14 +124,40 @@ public class NPCControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (PlayerControl.Instance.GameState == PlayerControl.GameStates.Playing && collision.gameObject.CompareTag("Player")) Killed();
+        if (!isBoss && PlayerControl.Instance.GameState == PlayerControl.GameStates.Playing && collision.gameObject.CompareTag("Player")) Killed();
     }
 
     void Killed()
     {
+        if (isBoss)
+        {
+            DestroyBossTail();
+        }
+
         ScoreController.Instance.AddPoints(PointValue);
         if (isFood) NPCManager.Instance.KillFood(gameObject);
         else NPCManager.Instance.KillEnemy(gameObject);
         Destroy(gameObject);
+    }
+
+    public void BossHurt()
+    {
+        if (isBoss && BossIFramesTimer == 0)
+        {
+            CurrentBossHealth -= 1;
+            if (CurrentBossHealth <= 0) Killed();
+            BossIFramesTimer = MaxBossIFramesTime;
+        }
+    }
+
+    public void RegisterBossTailSegment(GameObject segment)
+    {
+        if (!BossTailSegments.Contains(segment)) BossTailSegments.Add(segment);
+    }
+
+    void DestroyBossTail()
+    {
+        foreach (GameObject segment in BossTailSegments) Destroy(segment);
+        BossTailSegments.Clear();
     }
 }

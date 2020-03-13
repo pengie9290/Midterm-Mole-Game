@@ -69,7 +69,6 @@ public class ScoreController : MonoBehaviour
         if (Instance == null) Instance = this;
         else
         {
-            print("Destroyed");
             Destroy(gameObject);
         }
 
