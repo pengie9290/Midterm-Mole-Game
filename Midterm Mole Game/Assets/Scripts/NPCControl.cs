@@ -21,6 +21,7 @@ public class NPCControl : MonoBehaviour
     public Vector3 Direction = Vector3.zero;
     Rigidbody2D rb;
 
+    public float BossBreakFactor = 5;
     public float MaxBossHealth = 5;
     public float CurrentBossHealth = 5;
     public float BossIFramesTimer = 0;
@@ -106,7 +107,14 @@ public class NPCControl : MonoBehaviour
         {
             Vector3 PerfectDirection = PlayerControl.Instance.transform.position - transform.position;
             PerfectDirection.Normalize();
-            Direction = Vector3.Lerp(Direction, PerfectDirection, 0.1f);
+            Direction = Vector3.Lerp(Direction, PerfectDirection, 10 * Time.deltaTime);
+
+            Vector3 DirectionCheck = PerfectDirection * rb.velocity;
+            if (DirectionCheck.x < 0 || DirectionCheck.y < 0)
+            {
+                rb.velocity = rb.velocity / BossBreakFactor;
+            }
+
         }
         else if (CanSeePlayer)
         {
