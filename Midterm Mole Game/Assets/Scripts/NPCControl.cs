@@ -168,4 +168,10 @@ public class NPCControl : MonoBehaviour
         foreach (GameObject segment in BossTailSegments) Destroy(segment);
         BossTailSegments.Clear();
     }
+
+    void EndGame()
+    {
+        rb.velocity = Vector3.zero;
+        enabled = false;
+    }
 }

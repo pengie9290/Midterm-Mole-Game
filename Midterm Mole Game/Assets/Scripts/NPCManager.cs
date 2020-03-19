@@ -48,9 +48,14 @@ public class NPCManager : MonoBehaviour
     {
         PlayerControl.Instance.GameState = PlayerControl.GameStates.Victory;
         ScoreController.Instance.GameInProgress = false;
+        EndGame();
     }
 
+    public void EndGame()
+    {
+        foreach (var worm in Worms)
+            worm.SendMessage("EndGame");
+        foreach (var enemy in Enemies)
+            enemy.SendMessage("EndGame");
+    }
 }
-
-//Keep track of worm count
-//Send signal to score, player, and NPCs that the game has ended

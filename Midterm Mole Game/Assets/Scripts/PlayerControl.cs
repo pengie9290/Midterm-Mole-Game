@@ -96,9 +96,9 @@ public class PlayerControl : MonoBehaviour
     //Starts the game
     void StartPlaying()
     {
-        VictoryMessage.gameObject.SetActive(false);
-        GameOverMessage.gameObject.SetActive(false);
-        PressSpaceMessage.gameObject.SetActive(false);
+        if (VictoryMessage != null) VictoryMessage.gameObject.SetActive(false);
+        if (GameOverMessage != null) GameOverMessage.gameObject.SetActive(false);
+        if (PressSpaceMessage != null) PressSpaceMessage.gameObject.SetActive(false);
         Lives = 3;
         UpdateLifeCounter();
         RestartScene();
@@ -107,14 +107,16 @@ public class PlayerControl : MonoBehaviour
     //Loads Victory
     void LoadVictory()
     {
-        VictoryMessage.gameObject.SetActive(true);
-        //PressSpaceMessage.gameObject.SetActive(true);
+        if (VictoryMessage != null) VictoryMessage.gameObject.SetActive(true);
+        if (PressSpaceMessage != null) PressSpaceMessage.gameObject.SetActive(true);
     }
 
     //Loads Game Over
     void LoadGameOver()
     {
-        GameOverMessage.gameObject.SetActive(true);
+        if (GameOverMessage != null) GameOverMessage.gameObject.SetActive(true);
+        if (PressSpaceMessage != null) PressSpaceMessage.gameObject.SetActive(true);
+        NPCManager.Instance.EndGame();
     }
 
     void Awake()
@@ -241,6 +243,7 @@ public class PlayerControl : MonoBehaviour
     //Restarts the scene
     void RestartScene()
     {
+        print("Restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
