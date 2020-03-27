@@ -138,6 +138,7 @@ public class NPCControl : MonoBehaviour
 
     void Killed()
     {
+        NPCManager.Instance.PlayDeathSound(isFood, isBoss);
         if (isBoss)
         {
             DestroyBossTail();

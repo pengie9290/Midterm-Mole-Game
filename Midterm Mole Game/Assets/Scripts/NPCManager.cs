@@ -9,6 +9,10 @@ public class NPCManager : MonoBehaviour
     public List<GameObject> Worms = new List<GameObject>();
     public List<GameObject> Enemies =  new List<GameObject>();
 
+    public AudioSource FoodEaten;
+    public AudioSource EnemyDies;
+    public AudioSource BossDies;
+
     public int FoodRemaining
     {
         get
@@ -42,6 +46,13 @@ public class NPCManager : MonoBehaviour
     public void KillEnemy (GameObject enemy)
     {
         if (Enemies.Contains(enemy)) Enemies.Remove(enemy);
+    }
+
+    public void PlayDeathSound (bool isFood, bool isBoss)
+    {
+        if (isFood && FoodEaten != null) FoodEaten.Play();
+        if (isBoss && BossDies != null) BossDies.Play();
+        if (!isFood && !isBoss && EnemyDies != null) EnemyDies.Play();
     }
 
     public void WinGame()
