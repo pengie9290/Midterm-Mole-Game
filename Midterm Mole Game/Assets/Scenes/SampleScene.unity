@@ -296,6 +296,7 @@ MonoBehaviour:
   MoveTimer: 0
   MaxMoveTime: 5
   MinMoveTime: 1
+  RotationSpeed: 5
   MovementSpeed: 10
   Direction: {x: 0, y: 0, z: 0}
   BossBreakFactor: 5
@@ -1087,7 +1088,8 @@ MonoBehaviour:
   MoveTimer: 0
   MaxMoveTime: 5
   MinMoveTime: 1
-  MovementSpeed: 100
+  RotationSpeed: 10
+  MovementSpeed: 150
   Direction: {x: 0, y: 0, z: 0}
   BossBreakFactor: 1.25
   MaxBossHealth: 5
@@ -2675,7 +2677,8 @@ MonoBehaviour:
   MoveTimer: 0
   MaxMoveTime: 5
   MinMoveTime: 1
-  MovementSpeed: 30
+  RotationSpeed: 0.1
+  MovementSpeed: 10
   Direction: {x: 0, y: 0, z: 0}
   BossBreakFactor: 5
   MaxBossHealth: 5

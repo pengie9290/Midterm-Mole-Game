@@ -17,6 +17,7 @@ public class NPCControl : MonoBehaviour
     public float MaxMoveTime = 5f;
     public float MinMoveTime = 1f;
 
+    public float RotationSpeed = 5f;
     public float MovementSpeed = 1f;
     public Vector3 Direction = Vector3.zero;
     Rigidbody2D rb;
@@ -107,7 +108,7 @@ public class NPCControl : MonoBehaviour
         {
             Vector3 PerfectDirection = PlayerControl.Instance.transform.position - transform.position;
             PerfectDirection.Normalize();
-            Direction = Vector3.Lerp(Direction, PerfectDirection, 10 * Time.deltaTime);
+            Direction = Vector3.Lerp(Direction, PerfectDirection, RotationSpeed * Time.deltaTime);
 
             Vector3 DirectionCheck = PerfectDirection * rb.velocity;
             if (DirectionCheck.x < 0 || DirectionCheck.y < 0)
@@ -171,6 +172,7 @@ public class NPCControl : MonoBehaviour
 
     void EndGame()
     {
+        rb.freezeRotation = true;
         rb.velocity = Vector3.zero;
         enabled = false;
     }

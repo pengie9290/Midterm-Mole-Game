@@ -243,7 +243,6 @@ public class PlayerControl : MonoBehaviour
     //Restarts the scene
     void RestartScene()
     {
-        print("Restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
